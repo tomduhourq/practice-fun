@@ -9,7 +9,5 @@ object last {
     case x :: tail => last(tail)
     case _ => Option("Invalid list")
   }                                               //> last: (xs: List[Any])Any
-  List(1,2,3).last                                //> res0: Int = 3
-	List(2,3,4).last                          //> res1: Int = 4
-	List("apple","pear","orange") last        //> res2: String = orange
+  last(List(1,2,3,4))                             //> res0: Any = 4
 }
