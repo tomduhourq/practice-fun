@@ -14,7 +14,9 @@ object P06 {
                                                   //|  67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85,
                                                   //|  86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100)
   // n*(n+1)/2, with n = |Range(1,100).inclusive| = 100
-	val squareSumOfRange = 100*101/2 * 100*101/2
+  	def square(x:Int) = x*x
+  	val sumOfRange = 100*101/2
+	val squareSumOfRange = square(sumOfRange)
                                                   //> squareSumOfRange  : Int = 25502500
   // The result must be given in absolute value.
 	range.map(i => i*i).sum - squareSumOfRange//> res0: Int = -25164150
