@@ -19,6 +19,6 @@ object P06 {
 	val squareSumOfRange = square(sumOfRange)
                                                   //> squareSumOfRange  : Int = 25502500
   // The result must be given in absolute value.
-	range.map(i => i*i).sum - squareSumOfRange//> res0: Int = -25164150
+	range.map(square).sum - squareSumOfRange//> res0: Int = -25164150
 
 }
