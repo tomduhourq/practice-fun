@@ -15,5 +15,6 @@ class Mathematics {
     Stream.from(i + 1).find(j =>
       primes2.takeWhile(k => k * k <= j).forall(j % _ > 0)).get)
       
+      
   def firstNPrimes(n: Int) = primes.takeWhile(n>).toSet
 }
