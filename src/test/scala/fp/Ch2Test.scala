@@ -1,7 +1,6 @@
 package fp
 
 import org.scalatest.FlatSpec
-import org.junit.Before
 
 class Ch2Test extends FlatSpec {
   private val fp = new Ch2()
@@ -27,7 +26,7 @@ class Ch2Test extends FlatSpec {
     assert(!fp.isSorted(Array(1, 3, 2, 4), (x: Int, y: Int) => x < y))
   }
 
-  behavior of "partial1 using underscore notation"
+  behavior of "partial1"
   def f2(a: Int, b: Int) = a + b
   it should "return a function with one parameter" in {
     val f1: (Int) => Int = fp.partial1(3, f2)
