@@ -29,8 +29,12 @@ class Ch2Test extends FlatSpec {
   behavior of "partial1"
   def f2(a: Int, b: Int) = a + b
   it should "return a function with one parameter" in {
-    val f1: (Int) => Int = fp.partial1(3, f2)
+    val f1: Int => Int = fp.partial1(3, f2)
     assert(f1(10) === 13)
   }
 
+  behavior of "curry"
+  it should "return a function that takes its parameters one by one" in {
+    assert(fp.curry((x:Int,y:Int) => x*y)(10)(2) === 20)
+  }
 }
