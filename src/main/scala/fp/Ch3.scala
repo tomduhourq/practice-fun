@@ -17,9 +17,11 @@ class Ch3 {
     case l @ x :: xs if n == 0 => l
   }
 
-  // Exercise 4 p.40 --> dropWhile. Removes the elements from the List prefix as long as they match a predicate.
-  // By passing the arguments one by one, we are returning a function that takes f separately in order to help the compiler
-  // infer the types of f and not having to do something like (x: Int) => x > 45
+  /** 
+  * Exercise 4 p.40 --> dropWhile. Removes the elements from the List prefix as long as they match a predicate.
+  * By passing the arguments one by one, we are returning a function that takes f separately in order to help the
+  * compiler infer the types of f and not having to do something like (x: Int) => x > 45
+  */
   def dropWhile[A](list: List[A])(f: A => Boolean): List[A] = list match {
     case Nil => Nil
     case x :: xs if f(x) =>  dropWhile(xs)(f)
