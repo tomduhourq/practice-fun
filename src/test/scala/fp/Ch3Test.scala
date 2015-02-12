@@ -12,4 +12,13 @@ class Ch3Test extends FlatSpec {
   it should "Nil" in {
     assert(fp.tail(Nil) === Nil)
   }
+
+  behavior of "length"
+  it should "0" in {
+    assert(fp.length(Nil) === 0)
+  }
+
+  it should "10" in {
+    assert(fp.length(List(1,2,3,4,5,6,7,8,9,10)) === 10)
+  }
 }

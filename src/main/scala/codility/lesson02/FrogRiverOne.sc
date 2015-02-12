@@ -3,7 +3,7 @@ package codility.lesson02
 object FrogRiverOne {
   //--Correctness = 100% Performance = 100%
   def solution(X: Int, A: Array[Int]): Int = {
-    var counter = Array.fill[Boolean](X + 1)(false)
+    val counter = Array.fill[Boolean](X + 1)(false)
     var x = X
     for (i <- 0 until A.length) {
       val value = A(i)

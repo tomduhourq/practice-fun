@@ -44,4 +44,33 @@ class Ch3 {
     case x :: Nil => Nil
     case x :: xs => x :: init(xs)
   }
+
+  // NTH --> foldRight. Perform a series of operations recursively on a List to get a final result.
+  // Note that z is the seed of the operation represented by f, and is the last operand to be evaluated.
+  def foldRight[A,B](l: List[A], z: B)(f: (A,B) => B): B = l match {
+    case Nil => z
+    case x :: xs => f(x, foldRight(xs,z)(f))
+  }
+
+  // Exercise 9 p.44 --> length. Count the elements of a List using foldRight.
+  def length[A](l: List[A]): Int = foldRight(l,0)((a,acum) => 1 + acum)
+
+  // Exercise 10 p.44 --> foldLeft. Note that in foldLeft the seed is the acummulator
+  // and it's also tail-recursive.
+  def foldLeft[A,B](l: List[A], z: B)(f: (B,A) => B): B = l match {
+    case Nil => z
+    case x :: xs => foldLeft(xs,f(z,x))(f)
+  }
+
+  // Exercise 11 p.44 --> sum,product and length using foldLeft.
+  def sum(l: List[Int]): Int = foldLeft(l,0)(_ + _)
+  def product(l: List[Int]): Int = foldLeft(l,1)(_ * _)
+  def length2[A](l: List[A]): Int = foldLeft(l,0)((acum,a) => acum + 1)
+
+  // Exercise 12 p.45 --> reverse.
+  def reverse[A](l: List[A]): List[A] = foldLeft(l, Nil: List[A])((xs, ys) => ys :: xs)
+  def reverse2[A](l: List[A]): List[A] = foldRight(l, Nil: List[A])((xs: A , ys: List[A]) => ys ::: List(xs))
+
+  // Exercise 13 p.45 --> implement foldRight in terms of foldLeft and viceversa.
+  def foldLeft2[A,B](l: List[A], z: B)(f: (B,A) => B): B = foldRight(l, (b:B) => b)((a,g) => b => g(f(b,a)))(z)
 }

@@ -6,4 +6,7 @@ object P01 {
   def sumOfThreeOrFiveMultiplesUpTo(n:Int):Int = {1 until n filter(p => p % 3 == 0 || p % 5 == 0) sum}
                                                   //> sumOfThreeOrFiveMultiplesUpTo: (n: Int)Int
   sumOfThreeOrFiveMultiplesUpTo(1000)             //> res0: Int = 233168
-}
+
+
+  def sumOfThreeOrFiveMultiplesUpTo(n:Int):Int = {1 until n filter(p => p % 3 == 0 || p % 5 == 0) sum}
+  sumOfThreeOrFiveMultiplesUpTo(1000)
