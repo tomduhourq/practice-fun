@@ -8,3 +8,4 @@ Packages include my resolution of the exercises provided by:
 - [Functional Programming in Scala](http://www.manning.com/bjarnason/), by Paul Chiusano and Rúnar Bjarnason
 - [Project Euler](https://projecteuler.net/)
 
+The majority of the exercises were tested in the REPL and some using ScalaTest, because reasons.
