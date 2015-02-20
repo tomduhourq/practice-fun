@@ -18,7 +18,7 @@ class Ch2 {
   }
 
   // Exercise p.29 --> verify if an Array is sorted according to an ordering function
-  def isSorted[@specialized A](as: Array[A], gt: (A, A) => Boolean): Boolean =
+  def isSorted[@specialized(Int,Double,Long) A](as: Array[A], gt: (A, A) => Boolean): Boolean =
     as.forall { i =>
       val iPos = as.indexOf(i);
       iPos == as.length - 1 ||
