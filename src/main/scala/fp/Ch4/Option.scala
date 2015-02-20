@@ -31,8 +31,15 @@ sealed trait Option[+A] {
     case Algo(a) if f(a) => this
     case _ => Nada
   }
-
 }
 
 case class Algo[+A](get: A) extends Option[A]
 case object Nada extends Option[Nothing]
+
+// For the exercises which follow, I'll put them in the companion object
+object Option {
+  def mean(xs: Seq[Double]): Option[Double] = if(xs.isEmpty) Nada else Algo(xs.sum / xs.length)
+
+  // Exercise 2 p.56 --> variance: if m is the mean, then variance is the mean of math.pow(x - m, 2)
+  def variance(xs: Seq[Double]): Option[Double] = mean(xs).flatMap(m => mean(xs.map(x => math.pow(x - m, 2))))
+}
