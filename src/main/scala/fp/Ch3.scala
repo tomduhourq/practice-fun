@@ -148,9 +148,7 @@ class Ch3 {
     * ** Trees
     * *****************************************************************************************/
   sealed trait Tree[+A]
-
   case class Leaf[A](value: A) extends Tree[A]
-
   case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
 
   // Exercise 25 p.48 --> size: Give the number of nodes which a tree has
@@ -171,7 +169,7 @@ class Ch3 {
   // Exercise 27 p.48 --> depth: Give the longest path from the root of a tree to any leaf.
   def depth[A](t: Tree[A]): Int = t match {
     case Leaf(_) => 0
-    case Branch(l,r) => 1+ depth(l) max 1 + depth(r)
+    case Branch(l,r) => 1 + depth(l) max 1 + depth(r)
   }
 
   // Exercise 28 p.48 -->  mapT: apply a function to all elements of a Tree
