@@ -1,5 +1,7 @@
 package fp.Ch4
 
+import java.util.regex.Pattern
+
 /**
  * I am not using scala's None nor Some since they interfere in the implementations.
  * So Some is replaced by Algo and None is replaced by Nada.
@@ -54,4 +56,13 @@ object Option {
     case Nil => Algo(Nil)
     case x :: t => x.flatMap(y => sequence(t).map(y :: _))
   }
+
+  // Exercise 6 p.60 --> traverse: maps a List[A] to an Option of the transformations of applying f.
+  def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] =
+    a match {
+      case Nil => Algo(Nil)
+      case x :: xs => map2(f(x), traverse(xs)(f))(_ :: _) // My f for map2 would be cons, so C is List[B]
+    }
+
+  def sequenceByTraverse[A](a: List[Option[A]]): Option[List[A]] = traverse(a)(identity)
 }
