@@ -3,8 +3,8 @@ package fp.Ch4
 import java.util.regex.Pattern
 
 /**
- * I am not using scala's None nor Some since they interfere in the implementations.
- * So Some is replaced by Algo and None is replaced by Nada.
+ * I am not using scala's None nor Some due to interferences in the implementation of the functions.
+ * So Some is replaced by 'Algo' and None is replaced by 'Nada'.
  * Created by tomasduhourq on 2/19/15.
  */
 sealed trait Option[+A] {
