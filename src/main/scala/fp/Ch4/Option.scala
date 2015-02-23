@@ -40,6 +40,18 @@ case object Nada extends Option[Nothing]
 object Option {
   def mean(xs: Seq[Double]): Option[Double] = if(xs.isEmpty) Nada else Algo(xs.sum / xs.length)
 
+  // NTH --> lift: transform an ordinary function from A => B to another of type Option[A] => Option[B]
+  def lift[A,B](f: A => B): Option[A] => Option[B] = _ map f
+
   // Exercise 2 p.56 --> variance: if m is the mean, then variance is the mean of math.pow(x - m, 2)
   def variance(xs: Seq[Double]): Option[Double] = mean(xs).flatMap(m => mean(xs.map(x => math.pow(x - m, 2))))
+
+  // Exercise 3 p.59 --> map2: combines two Option values using a binary function.
+  def map2[A,B,C](a: Option[A],b: Option[B])(f: (A,B) => C): Option[C] = a.flatMap(x => b.map(y => f(x,y)))
+
+  // Exercise 5 p.59 --> sequence: combine a List[Option[A]] into one option containing a List of all Some in the list.
+  def sequence[A](l: List[Option[A]]): Option[List[A]] = l match {
+    case Nil => Algo(Nil)
+    case x :: t => x.flatMap(y => sequence(t).map(y :: _))
+  }
 }
