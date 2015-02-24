@@ -90,6 +90,8 @@ class Lists {
   def flatten[A](l: List[List[A]]): List[A] = foldLeft(l, Nil: List[A])(appendLeft)
 
   def flattenInverse[A](l: List[List[A]]): List[A] = foldRight(l, Nil: List[A])(appendRight)
+  
+  def flattenEasy[A](l: List[List[A]]): List[A] = for(xs <- l; x <- xs) yield x
 
   // Exercise 16 p.45 --> addOne. Adds 1 to each element of a List.
   def addOne[A](l: List[Int]): List[Int] = l.map(_ + 1)
