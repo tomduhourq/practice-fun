@@ -3,7 +3,6 @@ package codility.lesson02
 /**
  * Correctness: 100%
  * Performance: 100%
- * Created by tomasduhourq on 2/25/15.
  */
 object FrogRiverOne {
 

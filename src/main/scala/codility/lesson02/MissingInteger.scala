@@ -5,7 +5,6 @@ import scala.collection.immutable.SortedSet
 /**
  * Correctness: 100%
  * Performance: 100%
- * Created by tomasduhourq on 2/25/15.
  */
 object MissingInteger {
   // Find the minimum missing number that doesn't occur in A

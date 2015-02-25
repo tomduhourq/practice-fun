@@ -3,7 +3,6 @@ package codility.lesson02
 /**
  * Correctness: 75%
  * Performance: 20% lulz
- * Created by tomasduhourq on 2/25/15.
  */
 object Counters {
   def solution(N: Int, A: Array[Int]): Array[Int] = {

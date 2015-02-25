@@ -3,7 +3,6 @@ package codility.lesson02
 /**
  * Correctness: 80%
  * Performance: 80%
- * Created by tomasduhourq on 2/25/15.
  */
 object Permutation {
   // Determine whether an Array of N elements is a permutation:

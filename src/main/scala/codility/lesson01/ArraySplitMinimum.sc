@@ -3,7 +3,6 @@ package codility.lesson01
 /**
  * Correctness: 66%
  * Performance: 100%
- * Created by tomasduhourq on 2/25/15.
  */
 object ArraySplitMinimum {
 
