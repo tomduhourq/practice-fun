@@ -1,7 +1,12 @@
 package codility.lesson02
 
+/**
+ * Correctness: 100%
+ * Performance: 100%
+ * Created by tomasduhourq on 2/25/15.
+ */
 object FrogRiverOne {
-  //--Correctness = 100% Performance = 100%
+
   def solution(X: Int, A: Array[Int]): Int = {
     val counter = Array.fill[Boolean](X + 1)(false)
     var x = X

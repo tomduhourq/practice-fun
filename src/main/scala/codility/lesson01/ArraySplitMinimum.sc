@@ -1,21 +1,19 @@
 package codility.lesson01
 
+/**
+ * Correctness: 66%
+ * Performance: 100%
+ * Created by tomasduhourq on 2/25/15.
+ */
 object ArraySplitMinimum {
 
-	def sum(a:Array[Int]):Int ={
-		var sum = 0
-		for(i<-0 until a.length)
-			sum += a(i)
-			sum
-	}                                         //> sum: (a: Array[Int])Int
-	
-  def abs(x: Int): Int = if(x>=0) x else -x       //> abs: (x: Int)Int
-  //--Got 100% performance and 66% correctness
+  def abs(x: Int): Int = if(x >= 0) x else -x
+
   def splitMinimum(a: Array[Int]):Int = {
   	var min = 9999999
   	var sumLeft = 0
   	var diff =0
-  	var sumRight = sum(a)
+  	var sumRight = a.sum
   	for(i <-0 until a.length){
   		sumLeft += a(i)
   		sumRight -= sumLeft
