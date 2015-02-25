@@ -9,7 +9,11 @@ sealed trait Either[+E, +A] {
     case Right(b) => Right(f(b))
   }
 
-
+  def map2[EE >: E, B, C](b: Either[EE,B])(f: (A,B) => C): Either[EE, C] = (this, b) match {
+    case (Left(a),_) => Left(a)
+    case (_, Left(b)) => Left(b)
+    case (Right(a), Right(b)) => Right(f(a,b))
+  }
 
   // Exclusion of scala's Either was not working, so I typed my implementations.
   type Either[E,B] = fp.Ch4.Either[E,B]
