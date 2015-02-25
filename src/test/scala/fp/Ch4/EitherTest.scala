@@ -1,6 +1,5 @@
 package fp.Ch4
 
-import org.scalatest.{Matchers, FreeSpec}
 import fp.Ch4.Either
 
 /**
@@ -26,7 +25,7 @@ class EitherTest extends FreeSpec with Matchers {
       eitherInt.map2(eitherInt2)(f) should be (Right(7))
     }
 
-    "throws eitherString when calling map2 inappropiately" in {
+    "throws eitherString when calling map2 inappropriately" in {
       eitherInt.map2(eitherString)(f) should be (eitherString)
     }
   }
