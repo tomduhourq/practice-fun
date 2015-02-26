@@ -1,6 +1,6 @@
 package fp.Ch4
 
-import fp.Ch4.Either
+import org.scalatest.{Matchers, FreeSpec}
 
 /**
  * Created by tomas on 24/02/15.
