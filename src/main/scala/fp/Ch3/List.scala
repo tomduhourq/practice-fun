@@ -4,6 +4,13 @@ package fp.Ch3
  * Created by tomas on 22/02/15.
  */
 class Lists {
+  
+  // NTH --> reverse: compute a List in a reversed way
+  def reverse[A](l: List[A]): List[A] = l match {
+    case Nil => Nil
+    case x :: xs => reverse(xs) :+ x
+  }
+  
   // Exercise 2 p.40 --> tail. Retrieve the tail from a List.
   def tail[A](list: List[A]): List[Any] = list match {
     case Nil => Nil
