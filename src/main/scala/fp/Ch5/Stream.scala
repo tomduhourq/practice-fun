@@ -8,6 +8,20 @@ trait Stream[+A] {
     case Cons(h,t) => h() :: t().toList
     case _ => Nil
   }
+
+  // Exercise 2 p.69 --> take: Return a List of the first n elements of a Stream
+  def take(n: Int): Stream[A] = this match {
+    case Cons(h,_) if n == 1 => Stream.cons(h(),empty)
+    case Cons(h,t) if n > 1 => Stream.cons(h(),t().take(n-1))
+    case _ => empty
+  }
+
+  // Exercise 3 p.70 --> takeWhile: return a Stream until the condition is not given
+  def takeWhile(f: A => Boolean): Stream[A] = this match {
+    case Cons(h,t) if f(h()) => cons(h(),t().takeWhile(f))
+    case _ => empty
+  }
+
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]

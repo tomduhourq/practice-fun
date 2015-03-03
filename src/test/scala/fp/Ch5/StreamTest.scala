@@ -7,10 +7,10 @@ import org.scalatest.{FreeSpec, Matchers}
  */
 class StreamTest extends FreeSpec with Matchers {
   "My own Stream" - {
-    val s = Stream.cons(1,Stream.cons(2,Empty))
+    val s = Stream.cons(1,Stream.cons(2,Stream.cons(123,Empty)))
 
     "parses to a List correctly" in {
-      s.toList should be (List(1,2))
+      s.toList should be (List(1,2,123))
     }
   }
 }
