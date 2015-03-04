@@ -17,9 +17,9 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
   //--This is another much faster way taken from
   //--http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream
   lazy val fibs: Stream[BigInt] = 0 #:: 1 #:: fibs.zip(fibs.tail).map(p => p._1 + p._2)
-                                                  //> fibs: => Stream[BigInt]
+  //> fibs: => Stream[BigInt]
   def sumOfEvenFibsUpTo(n: Int) = fibs.takeWhile(_ <= n).filter(p => p % 2 == 0).sum
-                                                  //> sumOfEvenFibsUpTo: (n: Int)BigInt
+  //> sumOfEvenFibsUpTo: (n: Int)BigInt
   sumOfEvenFibsUpTo(4000000)                      //> res0: BigInt = 4613732
 
 }

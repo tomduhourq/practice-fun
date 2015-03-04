@@ -7,5 +7,5 @@ object P03 {
   val primeSource = new Mathematics               //> primeSource  : mathematics.Mathematics = mathematics.Mathematics@3b95a09c
   val n = 600851475143L                           //> n  : Long = 600851475143
   primeSource.primes.takeWhile(Math.sqrt(n)>).filter(n % _ == 0).max
-                                                  //> res0: Int = 6857
+  //> res0: Int = 6857
 }

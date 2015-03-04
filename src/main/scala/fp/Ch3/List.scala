@@ -4,13 +4,7 @@ package fp.Ch3
  * Created by tomas on 22/02/15.
  */
 class Lists {
-  
-  // NTH --> reverse: compute a List in a reversed way
-  def reverse[A](l: List[A]): List[A] = l match {
-    case Nil => Nil
-    case x :: xs => reverse(xs) :+ x
-  }
-  
+
   // Exercise 2 p.40 --> tail. Retrieve the tail from a List.
   def tail[A](list: List[A]): List[Any] = list match {
     case Nil => Nil
@@ -82,6 +76,12 @@ class Lists {
   def reverse[A](l: List[A]): List[A] = foldLeft(l, Nil: List[A])((xs, ys) => ys :: xs)
 
   def reverse2[A](l: List[A]): List[A] = foldRight(l, Nil: List[A])((xs: A, ys: List[A]) => ys ::: List(xs))
+
+  // NTH --> reverse: compute a List in a reversed way
+  def reverse3[A](l: List[A]): List[A] = l match {
+    case Nil => Nil
+    case x :: xs => reverse(xs) :+ x
+  }
 
   // Exercise 13 p.45 --> implement foldRight in terms of foldLeft and viceversa.
   def foldLeft2[A, B](l: List[A], z: B)(f: (B, A) => B): B = foldRight(l, (b: B) => b)((a, g) => b => g(f(b, a)))(z)
