@@ -73,4 +73,26 @@ object Stream {
   def apply[A](as: A*): Stream[A] =
     if (as.isEmpty) empty
     else cons(as.head, apply(as.tail: _*))
+
+  val ones: Stream[Int] = cons(1, ones)
+
+  // Exercise 7 p.73 --> constant: generalisation of ones
+  def constant[A](a: A): Stream[A] = cons(a, constant(a))
+
+  // Exercise 8 p.73 --> from: create a Stream adding 1 for each element generated
+  def from(n: Int): Stream[Int] = cons(n,from(n+1))
+
+  // Exercise 9 p.73 --> fibs: Generate an infinite Stream of Fibonacci numbers
+  lazy val fibs: Stream[Int] = {
+    def fibRecursive(prev: Int, fib1: Int): Stream[Int] =
+      cons(prev, fibRecursive(fib1, prev + fib1))
+    fibRecursive(0, 1)
+  }
+
+  // Exercise 10 p.73 --> unfold: create an infinite Stream from applying the function to the initial state
+  def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] =
+    f(z) match {
+      case Some((h,s)) => cons(h, unfold(s)(f))
+      case None => empty
+    }
 }
