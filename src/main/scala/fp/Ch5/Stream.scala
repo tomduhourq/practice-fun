@@ -36,6 +36,24 @@ trait Stream[+A] {
   def forAll(p: A => Boolean): Boolean =
     foldRight(true)((a,b) => p(a) && b)
 
+  // Exercise 5 p.71 --> takeWhileByFoldRight
+  def takeWhileByFoldRight(p: A => Boolean): Stream[A] =
+    foldRight(Empty: Stream[A])((a,b) => if(p(a)) cons(a,b) else Empty)
+
+  // Exercise 6 p.71 --> map, filter, append and flatMap
+  def map[B](f: A => B): Stream[B] =
+    foldRight(Empty: Stream[B])((a,b) => cons(f(a),b))
+
+  def filter(f: A => Boolean): Stream[A] =
+    foldRight(Empty: Stream[A])((a,b) => if(f(a)) cons(a,b) else b)
+
+  def append[B >: A](stream: => Stream[B]): Stream[B] =
+    foldRight(stream)((a,b) => cons(a,b))
+
+  def flatMap[B](f: A => Stream[B]): Stream[B] =
+    foldRight(empty[B])((a,b) => f(a) append b)
+
+
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
