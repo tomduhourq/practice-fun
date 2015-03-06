@@ -1,6 +1,7 @@
 package fp.Ch5
 
 import Stream._
+// Represent a potentially infinite collection of values lazily. 
 trait Stream[+A] {
 
   // Exercise 1 p.69 --> toList: force evaluation on each element of the Stream, yielding a List
