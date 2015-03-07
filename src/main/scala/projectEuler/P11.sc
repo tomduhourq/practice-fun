@@ -20,42 +20,67 @@ val grid = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
               20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
               20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
               01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"""
-  val tuples =
-    grid
-      .split("\n")
-      .map(_.trim)
-      .flatMap(_.split(" "))
-      .map(_.toInt)
-      .map { n => (x, y) match {
-            // Change row
-            case (_,19) =>
-              y = 0
-              x += 1
-              (n,x - 1,19)
-            case _ =>
-              y += 1
-              (n,x,y - 1)
-            }
-      }
 
-trait Mul {
-  def condition(n: Int): Boolean
-  def apply
-}
+val tuples =
+  grid
+    .split("\n")
+    .map(_.trim)
+    .flatMap(_.split(" "))
+    .map(_.toInt)
+    .map { n => (x, y) match {
+    // Change row
+    case (_,19) =>
+      y = 0
+      x += 1
+      (n,x - 1,19)
+    case _ =>
+      y += 1
+      (n,x,y - 1)
+  }
+  }
+    .toList
+
+(for {
+  t <- tuples
+  a <- tuples.getMulsAt(t._2, t._3)
+  m <- a
+} yield m).max
+
+
 object Utils {
-  implicit class tupleUtils(val t: (Int,Int,Int)){
-    val x = t._2
-    val y = t._3
-    def getMuls: Array[Int] =
-      Array(
-        LeftM(y),
-        RightM(y),
-        Down(x),
-        Up(x),
-        DiagUpRight(x,y),
-        DiagUpLeft(x,y),
-        DiagDownRight(x,y),
-        DiagDownLeft(x,y)
-      )
+  implicit class tupleArrayUtils(val t: List[(Int,Int,Int)]) {
+    def getMulsAt(x: Int, y: Int) = {
+      val pos = t.indexOf(t.find(p => p._2 == x && p._3 == y).get)
+      getLeft(x, y, pos) ::
+      getRight(x, y, pos) ::
+      getUp(x, y, pos) ::
+      getDown(x, y, pos) ::
+      getDiagUpRight(x, y, pos) ::
+      getDiagUpLeft(x, y, pos) ::
+      getDiagDownRight(x, y, pos) ::
+      getDiagDownLeft(x, y, pos) ::
+      Nil
+    }
+    def getLeft(x: Int, y: Int, pos: Int) =
+      if(y >= 3)
+        t(pos    )._1 *
+        t(pos - 1)._1 *
+        t(pos - 2)._1 *
+        t(pos - 3)._1
+      else 0
+
+    def getRight(x: Int, y: Int, pos: Int) =
+      if(y + 3 <= 19)
+        t(pos    )._1 *
+        t(pos + 1)._1 *
+        t(pos + 2)._1 *
+        t(pos + 3)._1
+      else 0
+
+    def getUp(x: Int, y: Int, pos: Int) =
+      if(x >= 3)
+        // Continue
+        1
+      else 0
   }
 }
