@@ -46,7 +46,7 @@ val tuples =
   t <- tuples
   a <- tuples.getMulsAt(t._2, t._3)
   m <- a
-} yield m).max
+} yield m).max // 70600674
 
 
 object Utils {
