@@ -1,3 +1,5 @@
+import Utils.tupleArrayUtils
+import scala.collection.immutable.SortedSet
 var x = 0
 var y = 0
 val grid = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
@@ -28,16 +30,16 @@ val tuples =
     .flatMap(_.split(" "))
     .map(_.toInt)
     .map { n => (x, y) match {
-    // Change row
-    case (_,19) =>
-      y = 0
-      x += 1
-      (n,x - 1,19)
-    case _ =>
-      y += 1
-      (n,x,y - 1)
-  }
-  }
+      // Change row
+      case (_,19) =>
+        y = 0
+        x += 1
+        (n,x - 1,19)
+      case _ =>
+        y += 1
+        (n,x,y - 1)
+      }
+    }
     .toList
 
 (for {
@@ -51,36 +53,96 @@ object Utils {
   implicit class tupleArrayUtils(val t: List[(Int,Int,Int)]) {
     def getMulsAt(x: Int, y: Int) = {
       val pos = t.indexOf(t.find(p => p._2 == x && p._3 == y).get)
-      getLeft(x, y, pos) ::
-      getRight(x, y, pos) ::
-      getUp(x, y, pos) ::
-      getDown(x, y, pos) ::
-      getDiagUpRight(x, y, pos) ::
-      getDiagUpLeft(x, y, pos) ::
-      getDiagDownRight(x, y, pos) ::
-      getDiagDownLeft(x, y, pos) ::
-      Nil
+      Set(
+        getLeft(y, pos) ,
+        getRight(y, pos) ,
+        getUp(x, pos) ,
+        getDown(x, pos) ,
+        getDiagUpRight(x, y, pos) ,
+        getDiagUpLeft(x, y, pos) ,
+        getDiagDownRight(x, y, pos) ,
+        getDiagDownLeft(x, y, pos)
+      )
     }
-    def getLeft(x: Int, y: Int, pos: Int) =
+
+    def getLeft(y: Int, pos: Int) =
       if(y >= 3)
-        t(pos    )._1 *
-        t(pos - 1)._1 *
-        t(pos - 2)._1 *
-        t(pos - 3)._1
-      else 0
+        Some(
+          t(pos    )._1 *
+          t(pos - 1)._1 *
+          t(pos - 2)._1 *
+          t(pos - 3)._1
+        )
+      else None
 
-    def getRight(x: Int, y: Int, pos: Int) =
+    def getRight(y: Int, pos: Int) =
       if(y + 3 <= 19)
-        t(pos    )._1 *
-        t(pos + 1)._1 *
-        t(pos + 2)._1 *
-        t(pos + 3)._1
-      else 0
+        Some(
+          t(pos    )._1 *
+          t(pos + 1)._1 *
+          t(pos + 2)._1 *
+          t(pos + 3)._1
+        )
+      else None
 
-    def getUp(x: Int, y: Int, pos: Int) =
+    def getUp(x: Int, pos: Int) =
       if(x >= 3)
-        // Continue
-        1
-      else 0
+        Some(
+          t(pos     )._1 *
+          t(pos - 20)._1 *
+          t(pos - 40)._1 *
+          t(pos - 60)._1
+        )
+      else None
+
+    def getDown(x: Int, pos: Int) =
+      if(x <= 16)
+        Some(
+          t(pos     )._1 *
+          t(pos + 20)._1 *
+          t(pos + 40)._1 *
+          t(pos + 60)._1
+        )
+      else None
+
+    def getDiagUpRight(x: Int, y: Int, pos: Int) =
+      if(y <= 16 && x >= 3)
+        Some(
+          t(pos     )._1 *
+          t(pos - 19)._1 *
+          t(pos - 38)._1 *
+          t(pos - 57)._1
+        )
+      else None
+
+    def getDiagUpLeft(x: Int, y: Int, pos: Int) =
+      if(x >= 3 && y >= 3)
+        Some(
+          t(pos     )._1 *
+          t(pos - 21)._1 *
+          t(pos - 42)._1 *
+          t(pos - 63)._1
+        )
+      else None
+
+    def getDiagDownRight(x: Int, y: Int, pos: Int) =
+      if(y <= 16 && x <= 16)
+        Some(
+          t(pos     )._1 *
+          t(pos + 21)._1 *
+          t(pos + 42)._1 *
+          t(pos + 63)._1
+        )
+      else None
+
+    def getDiagDownLeft(x: Int, y: Int, pos: Int) =
+      if(y >= 3 && x <= 16)
+        Some(
+          t(pos     )._1 *
+          t(pos + 19)._1 *
+          t(pos + 38)._1 *
+          t(pos + 57)._1
+        )
+      else None
   }
 }
