@@ -123,9 +123,9 @@ def getFirstNDigitsOfSum(numbers: List[String], n: Int): List[Int] = {
   sumGrid(numbers, 0).reverse.take(n)
 }
 
-getFirstNDigitsOfSum(grid,10)
+getFirstNDigitsOfSum(grid,10) // List(5, 5, 3, 7, 3, 7, 6, 2, 3, 0)
 
 // Alternate solution
 
-grid.map(BigDecimal(_)).sum.toString.take(10)
+grid.map(BigDecimal(_)).sum.toString.take(10) // 5537376230
 
