@@ -4,6 +4,12 @@ object NumUtils {
 	implicit class IntUtils(n:Int){
 	  def square = n * n
 	  def abs = if(n < 0) -n else n
+		def factorial ={
+			def recFactorial(acum: Int, left: Int): Int =
+				if(left == 1) acum
+				else recFactorial(acum * left, left - 1)
+			recFactorial(1,n)
+		}
 		def collatzSequence: List[Int] = {
 			def recCollatz(c: Int): List[Int] = {
 				if (c == 1) 1 :: Nil
@@ -14,5 +20,8 @@ object NumUtils {
 			}
 			recCollatz(n)
 		}
+		def isPrime =
+			if(n % 2 == 0) false
+			else Mathematics.primes0.take(n).contains(n)
 	}
 }

@@ -1,6 +1,7 @@
 package mathematics
+import NumUtils._
 
-class Mathematics {
+object Mathematics {
 
   def isPrime(n: Int): Boolean = {
     var i = 2
@@ -8,6 +9,8 @@ class Mathematics {
     while (i * i <= n && n % i != 0) i += 1
     n % i != 0
   }
+
+
 
   lazy val primes: Stream[Int] = 2 #:: 
     Stream.from(3, 2).filter(isPrime)
