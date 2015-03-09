@@ -6,5 +6,5 @@ object P05 {
 
   // Tried to solve it using a Stream.from(1), got an OutOfMemoryError, so instead I used Range
   Range(20, Int.MaxValue).find(n => Range(2, 20).inclusive.forall(n % _ == 0))
-  //> res0: Option[Int] = Some(232792560)
+  // 232792560
 }

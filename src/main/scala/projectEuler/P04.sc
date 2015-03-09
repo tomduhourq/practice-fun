@@ -8,5 +8,5 @@ object P04 {
     // We need flatMap here because only mapping will give us a Vector of Vectors for each number up to 999
     .flatMap(i => (i to 999).map(i*))
     .filter(p => p.toString == p.toString.reverse)
-    .max                                      //> res0: Int = 906609
+    .max                                      // 906609
 }

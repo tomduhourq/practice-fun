@@ -12,6 +12,6 @@ object P09 {
     b <- (a until 1000)
     c <- (b until 1000)
     if(a + b + c == 1000 && a.square + b.square == c.square)}
-  yield a*b*c).head      //> res0: Int = 31875000
-  // the Pythagorean triple is (200,375,425)
+  yield a*b*c).head // 31875000
+  // The Pythagorean triple is (200,375,425)
 }

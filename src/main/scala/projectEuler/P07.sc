@@ -5,5 +5,5 @@ object P07 {
 	What is the 10 001st prime number?*/
 
   // Zero indexed Stream
-  Mathematics.primes(10001 - 1)             //> res0: Int = 104743
+  Mathematics.primes(10001 - 1) // 104743
 }

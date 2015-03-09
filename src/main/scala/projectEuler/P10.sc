@@ -6,6 +6,5 @@ object P10 {
 
   // If I just put sum after takeWhile we would be having an incorrect answer due to scala.Int's upper bound.
   Mathematics.primes.takeWhile(2000000>).foldLeft(0L)(_ + _)
-  //> res0: Long = 142913828922
-
+  // 142913828922
 }
