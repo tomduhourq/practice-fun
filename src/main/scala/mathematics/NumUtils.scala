@@ -2,13 +2,13 @@ package mathematics
 
 object NumUtils {
 	implicit class IntUtils(n:Int){
-	  def square = n * n
-	  def abs = if(n < 0) -n else n
-		def factorial ={
-			def recFactorial(acum: Int, left: Int): Int =
+		def square = n * n
+		def abs = if(n < 0) -n else n
+		def ! = {
+			def recFactorial(acum: BigInt, left: Int): BigInt =
 				if(left == 1) acum
 				else recFactorial(acum * left, left - 1)
-			recFactorial(1,n)
+			recFactorial(BigInt(1),n)
 		}
 		def collatzSequence: List[Int] = {
 			def recCollatz(c: Int): List[Int] = {
