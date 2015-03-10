@@ -5,7 +5,7 @@
   * right movements and 2! from the down movements.
   * For this problem we have 20 rights and 20 downs.
   * So the rule is a!/b!(a - b)! (definition of combinatorial number)
-  * with a = m + n = 20 + 20 = 40 in our case
+  * with a = x + y rows = 20 + 20 = 40 in our case
   * and b = 20
   */
 object NumUtils {

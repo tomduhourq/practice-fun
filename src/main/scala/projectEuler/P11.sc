@@ -26,8 +26,7 @@ val grid = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 val tuples =
   grid
     .split("\n")
-    .map(_.trim)
-    .flatMap(_.split(" "))
+    .flatMap(_.trim.split(" "))
     .map(_.toInt)
     .map { n => (x, y) match {
       // Change row
