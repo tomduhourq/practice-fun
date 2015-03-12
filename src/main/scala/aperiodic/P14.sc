@@ -9,6 +9,6 @@ def duplicateN[A](n: Int, l: List[A]): List[A] = {
   def generator(left: Int, elem: A): List[A] =
     if(left == 0) Nil
     else elem :: generator(left - 1, elem)
-  l.flatMap(x => generator(n, x))
+  l.flatMap(generator(n, _))
 }
 
