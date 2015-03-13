@@ -2,7 +2,7 @@ practice-fun
 ============
 This is a repository of several exercises taken from several sites, just for fun and answered fully in Scala.
 
-Packages include my resolution of the exercises provided by:
+Packages include my resolution to the exercises proposed by:
 
 - [Codility for programmers](https://codility.com/programmers/lessons/)
 - [Functional Programming in Scala](http://www.manning.com/bjarnason/), by Paul Chiusano and Rúnar Bjarnason
@@ -10,4 +10,4 @@ Packages include my resolution of the exercises provided by:
 - [Project Euler](https://projecteuler.net/)
 - [Aperiodic](http://aperiodic.net/phil/scala/s-99/)
 
-The majority of the exercises were tested in the REPL and some using ScalaTest, because reasons.
+Exercises were tested in the REPL, worksheets and ScalaTest.
