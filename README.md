@@ -6,6 +6,8 @@ Packages include my resolution of the exercises provided by:
 
 - [Codility for programmers](https://codility.com/programmers/lessons/)
 - [Functional Programming in Scala](http://www.manning.com/bjarnason/), by Paul Chiusano and Rúnar Bjarnason
+- [Programming in Scala](http://www.amazon.com/Programming-Scala-Comprehensive-Step---Step/dp/0981531644/ref=sr_1_1?ie=UTF8&qid=1426263350&sr=8-1&keywords=programming+in+scala), by Martin Odersky, Lex Spoon and Bill Venners
 - [Project Euler](https://projecteuler.net/)
+- [Aperiodic](http://aperiodic.net/phil/scala/s-99/)
 
 The majority of the exercises were tested in the REPL and some using ScalaTest, because reasons.
