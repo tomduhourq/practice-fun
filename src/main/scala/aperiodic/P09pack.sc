@@ -1,6 +1,6 @@
 package aperiodic
 
-object P09pack {
+object P091011pack {
   def pack[A](l: List[A]): List[List[A]] = {
     if (l.isEmpty) List(Nil)
     else {
