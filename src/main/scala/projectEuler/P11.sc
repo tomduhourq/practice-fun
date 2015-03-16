@@ -51,7 +51,7 @@ val tuples =
 object Utils {
   implicit class tupleArrayUtils(val t: List[(Int,Int,Int)]) {
     def getMulsAt(x: Int, y: Int) = {
-      val pos = t.indexOf(t.find(p => p._2 == x && p._3 == y).get)
+      val pos = t.indexOf(t.find(p => p._2 == x && p._3 == y).getOrElse(1))
       Set(
         getLeft(y, pos) ,
         getRight(y, pos) ,
