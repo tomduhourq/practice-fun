@@ -1,32 +1,16 @@
-trait Day {
-  def next : Day
-}
+val lengths = List(31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 
-object Monday extends Day {
-  def next = Tuesday
-}
+// map days of months
+val months = for{y <- 1900 to 2000; m <- 1 to 12}
+  yield
+    if(m == 2)
+      if (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)) 29 else 28
+    else
+      lengths(m - 1)
 
-object Tuesday extends Day {
-  def next = Wednesday
-}
+// I want the intermediate results
+val fs = months.scanLeft(1)((ws, l) => (ws + l) % 7)
 
-object Wednesday extends Day {
-  def next = Thursday
-}
-
-object Thursday extends Day {
-  def next = Friday
-}
-
-object Friday extends Day {
-  def next = Saturday
-}
-
-object Saturday extends Day {
-  def next = Sunday
-}
-
-object Sunday extends Day {
-  def next = Monday
-}
+// drop first year
+fs.drop(12).take(1200).count(_ == 0)
 
