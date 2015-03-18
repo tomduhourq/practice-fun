@@ -14,4 +14,12 @@ object P09 {
     if(a + b + c == 1000 && a.square + b.square == c.square)}
   yield a*b*c).head // 31875000
   // The Pythagorean triple is (200,375,425)
+
+  // Another way to calculate the triples
+  for {
+    z <- Stream.from(1)
+    x <- Stream.range(1, z)
+    y <- Stream.range(x, z)
+    if x*x + y*y == z*z
+  } yield (x, y, z)
 }
