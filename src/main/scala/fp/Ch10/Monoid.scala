@@ -12,7 +12,7 @@ object Monoid {
 
   val stringMonoid = new Monoid[String]{
     def op(a1: String, a2: String) = a1 + a2
-    val zero = " "
+    val zero = ""
   }
 
   def listMonoid[A] = new Monoid[List[A]] {
@@ -60,4 +60,26 @@ object Monoid {
     def op(a1: String, a2: String) = a1.trim + " " + a2
     val zero = " "
   }
+
+  // NTH --> We can get the dual of any monoid just by flipping the `op`.
+  def dual[A](m: Monoid[A]): Monoid[A] = new Monoid[A] {
+    def op(x: A, y: A): A = m.op(y, x)
+    val zero = m.zero
+  }
+
+  // Exercise 6 p.180 --> Concatenate: fold a list with a monoid
+  def concatenate[A](as: List[A], m: Monoid[A]) =
+    as.foldLeft(m.zero)(m.op)
+
+  // Exercise 7 p.180 --> FoldMap: fold a list with a monoid by converting the elements to the type needed
+  def foldMap[A, B](as: List[A], m: Monoid[B])(f: A => B) =
+    concatenate(as map f, m)
+
+  // Exercise 8 p.180 --> Define foldLeft and FoldRight in terms of foldMap
+  def foldRight[A, B](as: List[A])(z: B)(f: (A, B) => B) =
+    foldMap(as, EndoMonoid[B])(f curried)(z)
+
+  // Here I flip the Endomonoid
+  def foldLeft[A, B](as: List[A])(z: B)(f: (B, A) => B) =
+    foldMap(as, dual(EndoMonoid[B]))(a => b => f(b, a))(z)
 }
