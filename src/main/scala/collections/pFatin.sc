@@ -5,6 +5,8 @@ def time[A](f: => A) = {
   ret
 }
 
+// https://pavelfatin.com/scala-collections-tips-and-tricks/
+
 /** References
   seq — an instance of Seq-based collection, like Seq(1, 2, 3)
   set — an instance of Set, for example Set(1, 2, 3)
