@@ -1,6 +1,5 @@
 package fp
 
-import scala.Function1
 
 // This class represents Chapter 2 exercises of Functional Programming in Scala
 class Ch2 {

@@ -1,9 +1,9 @@
 package performance
 
-/**
- * Created by tomas on 22/03/15.
- */
+
 object Perf {
+  // I needed f to be a call-by-name parameter since normal parametrization
+  // would result in evaluation of f before I actually need it.
   def time[A](f: => A) = {
     val s = System.nanoTime
     val ret = f
