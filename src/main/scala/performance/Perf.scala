@@ -1,4 +1,4 @@
-package Performance
+package performance
 
 /**
  * Created by tomas on 22/03/15.
