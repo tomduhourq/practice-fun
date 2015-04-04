@@ -1,3 +1,4 @@
+[![Build Status](https://api.travis-ci.org/tomduhourq/practice-fun.svg)](https://travis-ci.org/tomduhourq/practice-fun)
 practice-fun
 ============
 This is a repository of several exercises taken from several sites, just for fun and answered fully in Scala.
