@@ -1,5 +1,9 @@
 package fp
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b90711e7046ccc147c8abc2c43d8347faed3070
 // This class represents Chapter 2 exercises of Functional Programming in Scala
 class Ch2 {
   // Exercise p.22 --> Provide the nth Fibonacci number with a tail recursive function
