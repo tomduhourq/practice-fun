@@ -11,3 +11,7 @@ Packages include my resolution to the exercises proposed by:
 - [Aperiodic](http://aperiodic.net/phil/scala/s-99/)
 
 Exercises were tested in the REPL, worksheets and ScalaTest.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tomduhourq/practice-fun/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

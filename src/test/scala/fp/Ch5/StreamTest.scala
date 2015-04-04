@@ -41,6 +41,9 @@ class StreamTest extends FreeSpec with Matchers {
     "flatMaps everyone to String" in {
       s.flatMap( x => Stream(x.toString)).toList should be (List("1","2","123"))
     }
+    "maps by unfold correctly" in {
+      s.mapByUnfold(x => x * 2).toList should be (List(2, 4, 246))
+    }
   }
 
   "My Stream companion object" - {
@@ -55,5 +58,17 @@ class StreamTest extends FreeSpec with Matchers {
       Stream.fibs.take(6).toList should be(List(0, 1, 1, 2, 3, 5))
     }
 
+    "correctly unfolds constantly" in {
+      Stream.constantByUnfold(2).take(5).toList should be (List(2,2,2,2,2))
+      Stream.onesByUnfold.take(2).toList should be (List(1, 1))
+    }
+
+    "correctly unfolds from a given number" in {
+      Stream.fromByUnfold(71).take(3).toList should be (List(71, 72, 73))
+    }
+
+    "correctly unfolds the Fibonacci sequence" in {
+      Stream.fibs.take(5).toList should be (List(0, 1, 1, 2, 3))
+    }
   }
 }

@@ -54,7 +54,14 @@ trait Stream[+A] {
   def flatMap[B](f: A => Stream[B]): Stream[B] =
     foldRight(empty[B])((a,b) => f(a) append b)
 
+  // Exercise 12 p.74 --> implement map ,take, takeWhile, zip and zipAll via unfold (cluster fuck)
+  def mapByUnfold[B](f: A => B): Stream[B] =
+    unfold(this) {
+      case Cons(h, t) => Some(f(h()), t())
+      case Empty => None
+    }
 
+//  def take(n: Int): Stream[A] = unfold((this,n))(n => if(n == 0) None else Some(cons()))
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
@@ -96,4 +103,15 @@ object Stream {
       case Some((h,s)) => cons(h, unfold(s)(f))
       case None => empty
     }
+
+  // Exercise 11 p.74 --> fibs, from, constant and ones in terms of unfold
+  val onesByUnfold = constantByUnfold(1)
+  def constantByUnfold[A](a: A) = unfold(empty)(s => Some((a, s)))
+  def fromByUnfold(n: Int): Stream[Int] =
+    unfold(cons(n,empty)){case Cons(h, t) => Some((h(), cons(h() + 1, t())))}
+  lazy val fibsByUnfold: Stream[Int] =
+    unfold((0, 1))
+   {case (prev0, prev1) =>
+     val actualFib = prev0 + prev1
+     Some(actualFib, (prev1, actualFib))}
 }
