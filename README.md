@@ -15,3 +15,7 @@ Exercises were tested in the REPL, worksheets and ScalaTest.
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tomduhourq/practice-fun/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tomduhourq/practice-fun/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
