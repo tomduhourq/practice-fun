@@ -8,6 +8,10 @@ object Mathematics {
     fibs.zip(fibs.tail).map(p => p._1 + p._2)
   lazy val fibs2: Stream[BigInt] = 0 #::
     fibs2.scanLeft(BigInt(1)){_ + _}
+  lazy val fibs3: Stream[Long] = {
+    def fibRec(a: Long, b: Long): Stream[Long] = a #:: fibRec(b, a + b)
+    fibRec(0, 1)
+  }
   lazy val primes: Stream[Int] = 2 #::
     Stream.from(3, 2).filter(_.isPrime)
   // This one determines 'in line' if the number to add is prime.
