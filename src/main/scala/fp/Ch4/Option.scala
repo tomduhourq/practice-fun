@@ -18,6 +18,7 @@ sealed trait Option[+A] {
     case Nada => Nada
     case Algo(a) => f(a)
   }
+
   // B must be a supertype of A, and default is passed as a call-by-name parameter.
   def getOrElse[B >: A](default: => B): B = this match {
     case Nada => default

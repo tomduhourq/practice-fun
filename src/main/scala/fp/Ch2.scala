@@ -1,9 +1,12 @@
 package fp
 
+import scala.annotation.tailrec
+
 // This class represents Chapter 2 exercises of Functional Programming in Scala
 class Ch2 {
   // Exercise p.22 --> Provide the nth Fibonacci number with a tail recursive function
   def fib(n: Int): Int = {
+    @tailrec
     def fibRecursive(first: Int, second: Int, count: Int): Int = {
       if (count == 2) first + second
       else fibRecursive(second, first + second, count - 1)
@@ -25,7 +28,7 @@ class Ch2 {
 
   // NTH composeAll, apply a List of functions in a composite way
   def composeAll[A](fs: List[A => A]): A => A =
-    fs.foldLeft((a: A) => a)(_ andThen _)
+    fs.foldLeft((a: A) => identity(a))(_ andThen _)
 
   // Exercise p.29 --> implement partial1
   def partial1[A, B, C](a: A, f: (A, B) => C): B => C =
