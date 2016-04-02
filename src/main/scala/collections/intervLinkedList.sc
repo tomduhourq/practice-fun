@@ -13,6 +13,8 @@ reverse2(List(1,2,3))
 reverse(Nil)
 reverse2(Nil)
 
+// Singly linked list
+
 trait MyList[+A]
 case class Node[A](v: A, next: MyList[A]) extends MyList[A] {
   override def toString = v.toString + " -> " + next.toString

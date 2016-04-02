@@ -41,6 +41,13 @@ object Tree {
     case Branch(l,r) => g(fold(l)(f)(g), fold(r)(f)(g))
   }
 
+  def prefix[A](t: Tree[A]): String = t match {
+    case Branch(Leaf(x), Leaf(y)) => x.toString + y.toString
+    case Branch(Leaf(x), right @ Branch(l, r)) => x.toString + prefix(right)
+    case Branch(left @ Branch(l, r), Leaf(x)) => prefix(left) + x.toString
+    case Branch( left @ Branch(l1, r1), right @ Branch(l2, r2)) => prefix(left) + prefix(right)
+  }
+
   def sizeByFold[A](t: Tree[A]): Int = fold(t)(a => 1)(1 + _ + _)
   def maximumByFold(t: Tree[Int]): Int = fold(t)(a => a)(_ max _)
   def depthByFold[A](t: Tree[A]): Int = fold(t)(a => 0)((branch1,branch2) => 1 + (branch1 max branch2))
