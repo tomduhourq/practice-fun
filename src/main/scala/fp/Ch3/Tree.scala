@@ -3,11 +3,11 @@ package fp.Ch3
 /**
  * Created by tomas on 22/02/15.
  */
-class Trees {
-  sealed trait Tree[+A]
-  case class Leaf[A](value: A) extends Tree[A]
-  case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
+sealed trait Tree[+A]
+case class Leaf[A](value: A) extends Tree[A]
+case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
 
+object Tree {
   // Exercise 25 p.48 --> size: Give the number of nodes which a tree has
   def size[A](t: Tree[A]): Int = t match {
     case Leaf(_) => 1

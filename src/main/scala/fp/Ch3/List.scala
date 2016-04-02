@@ -104,7 +104,7 @@ class Lists {
   def addOne[A](l: List[Int]): List[Int] = l.map(_ + 1)
 
   // Exercise 17 p.46 --> convToString: Convert a List[Double] into List[String]
-  def convToString(l: List[Double]): List[String] = l.map(_.toString)
+  def convToString(l: List[Double]): List[String] = l map (_.toString)
 
   // Exercise 18 p.46 --> map: apply a function to each element of a List and return a new one.
   def map[A, B](l: List[A])(f: A => B): List[B] = foldLeft(l, Nil: List[B])((b, a) => b ::: List(f(a)))
