@@ -29,10 +29,11 @@ else {
       palindrome <- obtainSubstrings(i, str, size)
     } yield palindrome
   if(palindromes.isEmpty) None
-  else Some(palindromes.reduce((max, next) =>
-    if(max.length < next.length) next else max))
+  else //Some(palindromes.reduce((max, next) =>
+    //if(max.length < next.length) next else max))
+    Some(palindromes.sortBy(_.length).last)
 }
-greatestPalindrome("aoboaccccc") == Some("aoboa")
+greatestPalindrome("aoboacccc") == Some("aoboa")
 greatestPalindrome("tomas") == None
 greatestPalindrome("") == Some("")
 greatestPalindrome("anitalavalatina") == Some("anitalavalatina")
@@ -60,11 +61,14 @@ def greatestDiffChars(str: String, k: Int): Option[String] = {
     val size = str length
     val substringsGreaterThanK =
       for {
-        i <- 0 until size
+        i <- str.indices
         x <- getDifferentSubstrings(size, i)
       } yield x
     if(substringsGreaterThanK.isEmpty) None
-    else Some(substringsGreaterThanK.reduce((a, b) => if(a.length > b.length) a else b))
+    else Some(
+      //substringsGreaterThanK.reduce((a, b) => if(a.length > b.length) a else b)
+      substringsGreaterThanK.sortBy(_.length).last
+    )
   }
 }
 
