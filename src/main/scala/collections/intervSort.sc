@@ -87,3 +87,19 @@ def bubbleSort(l: List[Int]): List[Int] = {
 
 bubbleSort(List(5,4,1,2))
 
+
+// Counting Sort O(n)
+def countSort(l: Array[Int])= {
+  val min = l.min
+  val max = l.max
+  l.foldLeft(Array.fill(max - min + 1)(0)) {(arr, n) =>
+    arr(n - min) += 1
+    arr
+  }
+  .zipWithIndex
+  .collect { case (quant, elem) if(quant != 0) => (quant, elem + min)}
+  .flatMap{ case (quant, elem) => Array.fill(quant)(elem)}
+}
+
+countSort(Array(1,5,67,1,3,5,1,45,7,61,2,5,869))
+
