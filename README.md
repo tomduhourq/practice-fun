@@ -9,6 +9,7 @@ Packages include my resolution to the exercises proposed by:
 - [Programming in Scala](http://www.amazon.com/Programming-Scala-Comprehensive-Step---Step/dp/0981531644/ref=sr_1_1?ie=UTF8&qid=1426263350&sr=8-1&keywords=programming+in+scala), by Martin Odersky, Lex Spoon and Bill Venners
 - [Project Euler](https://projecteuler.net/)
 - [Aperiodic](http://aperiodic.net/phil/scala/s-99/)
+- Common interview questions (palindromes, substrings, trees, sorting algorithms, lists)
 
 Exercises were tested in the REPL, worksheets and ScalaTest.
 
