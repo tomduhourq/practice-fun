@@ -46,7 +46,7 @@ def greatestDiffChars(str: String, k: Int): Option[String] = {
   // 1 - find substrings >= k in length
   // 2 - filter diff chars
   // 3 - max
-  def containsKDifferentChars(s: String) = s.groupBy(identity).keySet.size == k
+  def containsKDifferentChars(s: String) = s.distinct.length == k
 
   def getDifferentSubstrings(size: Int, i: Int): IndexedSeq[String] = {
     (i until size)

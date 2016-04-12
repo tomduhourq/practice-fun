@@ -24,6 +24,8 @@ val ordered = List.fill(4000)(23)
 time(quicksort(randomArray))
 time(quicksort(ordered))
 quicksort(List(2,3,4,1,1,1))
+
+
 // Insertion sort:
 // if list is empty Nil
 // else insert(head, sort(tail))
