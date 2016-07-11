@@ -3,7 +3,8 @@ package fp
 import scala.annotation.tailrec
 
 // This class represents Chapter 2 exercises of Functional Programming in Scala
-class Ch2 {
+object Ch2 {
+  val FIBS_INITIAL = Set(0, 1)
   // Exercise p.22 --> Provide the nth Fibonacci number with a tail recursive function
   def fib(n: Int): Int = {
     @tailrec
@@ -11,11 +12,7 @@ class Ch2 {
       if (count == 2) first + second
       else fibRecursive(second, first + second, count - 1)
     }
-    n match {
-      case 0 => 0
-      case 1 => 1
-      case _ => fibRecursive(0, 1, n)
-    }
+    if(FIBS_INITIAL contains n) n else fibRecursive(0, 1, n)
   }
 
   // Exercise p.29 --> verify if an Array is sorted according to an ordering function

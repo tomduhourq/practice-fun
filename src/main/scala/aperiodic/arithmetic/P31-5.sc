@@ -12,9 +12,7 @@ object Utils {
     lazy val totient =
       if(v % 2 == 0) v / 2
       else
-        (1 to v)
-          .filter(v.isCoprimeTo)
-          .length
+        (1 to v).count(v.isCoprimeTo)
     lazy val primeFactors =
       (1 to v)
         .filter(x => x.isPrime && v % x == 0)
