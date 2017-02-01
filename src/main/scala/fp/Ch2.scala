@@ -6,9 +6,9 @@ import scala.annotation.tailrec
 object Ch2 {
   val FIBS_INITIAL = Set(0, 1)
   // Exercise p.22 --> Provide the nth Fibonacci number with a tail recursive function
-  def fib(n: Int): Int = {
-    @tailrec
-    def fibRecursive(first: Int, second: Int, count: Int): Int = {
+  def fib(n: Int): BigInt = {
+    @annotation.tailrec
+    def fibRecursive(first: Int, second: Int, count: Int): BigInt = {
       if (count == 2) first + second
       else fibRecursive(second, first + second, count - 1)
     }
