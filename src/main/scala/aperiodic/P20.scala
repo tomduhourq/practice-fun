@@ -3,7 +3,7 @@ package aperiodic
 class P20[A] {
   def removeAt(n: Int, list: List[A]): (List[A], Option[A]) = {
     val length = list.length
-    if (n > length - 1 || n <= 0) (list, None)
+    if (n > length - 1 || n < 0) (list, None)
     else (list.take(n) ::: list.takeRight(length - n - 1), Some(list(n)))
   }
 }
