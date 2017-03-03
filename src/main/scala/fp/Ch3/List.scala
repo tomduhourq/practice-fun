@@ -1,11 +1,36 @@
 package fp.Ch3
 
+import scala.annotation.tailrec
+
 sealed trait List[+A]
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
 
 /** Chapter 3 */
 object List {
+
+  def apply[A](elems: A*): List[A] = if (elems.isEmpty) Nil else Cons(elems.head, apply(elems.tail: _*))
+
+  // Exercise 3.2
+  def tail[A](l: List[A]) = l match {
+    case Cons(_, tail) => Some(tail)
+    case Nil => None
+  }
+
+  def setHead[A](list: List[A], elem: A) = list match {
+    case Cons(_, tail) => Cons(elem, tail)
+    case Nil => Cons(elem, Nil)
+  }
+
+  def drop[A](list: List[A], n: Int) = {
+    @tailrec
+    def dropRec(current: List[A], left: Int): List[A] = (current, left) match {
+      case (Nil, _) => Nil
+      case (cons, 0) => cons
+      case (Cons(_, tail), n) if n > 0 => dropRec(tail, n - 1)
+    }
+    dropRec(list, n)
+  }
 
   /**
    * Make possible for our lists to retrieve the product of its members
