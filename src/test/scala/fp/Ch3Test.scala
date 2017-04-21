@@ -1,6 +1,6 @@
 package fp
 
-import fp.Ch3.{Leaf, Tree, Branch, Lists}
+import fp.Ch3.{Leaf, Tree, Branch}
 import org.scalatest.FlatSpec
 
 class Ch3Test extends FlatSpec {
