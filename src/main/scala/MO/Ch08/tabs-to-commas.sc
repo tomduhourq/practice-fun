@@ -13,14 +13,14 @@ def filesInDir(dir: String): List[File] = {
   else List.empty[File]
 }
 
-val dir = "your-dir"
+val dir = "dir"
 
 // get files metadata
 val csvFiles = filesInDir(dir)
 
 // prepare writers to write in parallel
 val printWriters = csvFiles.map { f =>
-  val file = new File(s"name")
+  val file = new File(s"${dir}d${f.getName}")
   new PrintWriter(file)
 }
 
