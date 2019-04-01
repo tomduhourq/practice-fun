@@ -1,4 +1,5 @@
-import scala.util.Random
+import scala.annotation.tailrec
+import scala.util.{Random, Sorting}
 def time[A](block: => A): A = {
   val start = System.currentTimeMillis()
   val f = block
@@ -7,14 +8,16 @@ def time[A](block: => A): A = {
 }
 
 
+// O(n logn) a todos le aplica una pasada que va reduciendo el universo
+// O(nˆ2) peor caso
 def quicksort(l: List[Int]): List[Int] = {
   if(l.length <= 1) l
   else {
     val midElem = l(l.length / 2)
     List.concat(
-      quicksort(l filter (midElem >)),
-      l filter (midElem ==),
-      quicksort(l filter (midElem <)))
+      quicksort(l filter (midElem > _)),
+      l filter (midElem == _),
+      quicksort(l filter (midElem < _)))
   }
 }
 
@@ -99,9 +102,31 @@ def countSort(l: Array[Int])= {
     arr
   }
   .zipWithIndex
-  .collect { case (quant, elem) if(quant != 0) => (quant, elem + min)}
+  .collect { case (quant, elem) if quant != 0 => (quant, elem + min)}
   .flatMap{ case (quant, elem) => Array.fill(quant)(elem)}
 }
 
 countSort(Array(1,5,67,1,3,5,1,45,7,61,2,5,869))
+
+
+
+// Performs TimSort or legacy merge sort if requested
+Array(1,2,3,1,5,0).sorted
+
+// Best algo to search in ordered array is binary search
+// Complexity O(log n) on each step it reduces the universe to search by half
+def search(target:Int, l:List[Int]): Option[Int] = {
+  @tailrec
+  def recursion(lo: Int, hi: Int):Option[Int] =
+    if(hi < lo) None
+    else {
+      val mid = (lo + hi) / 2
+      if (l(mid) > target) recursion(lo, mid - 1)
+      else if (l(mid) < target) recursion(mid + 1, hi)
+      else Some(mid)
+    }
+
+
+  recursion(lo = 0, hi = l.length - 1)
+}
 
